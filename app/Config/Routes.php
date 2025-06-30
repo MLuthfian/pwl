@@ -22,7 +22,7 @@ $routes->group('produk', ['filter' => 'auth'], function ($routes) {
 
  
     $routes->get('kategori', 'ProductCategoryController::index');
-    $routes->post('kategori', 'ProductCategoryController::index');
+    $routes->post('kateg', 'ProductCategoryController::index');
     $routes->post('/kategori/edit/(:num)', 'ProductCategoryController::edit/$1');
     $routes->get('/kategori/delete/(:num)', 'ProductCategoryController::delete/$1');
 
@@ -42,6 +42,6 @@ $routes->get('get-cost', 'TransaksiController::getCost', ['filter' => 'auth']);
 
 $routes->get('profile', 'Home::profile', ['filter' => 'auth']);
 $routes->get('keranjang', 'TransaksiController::index', ['filter' => 'auth']);
-$routes->get('contact', 'Home::contact', ['filter' => 'auth']);
+$routes->get('contact', 'ContactController::index', ['filter' => 'auth']);
 
 $routes->resource('api', ['controller' => 'apiController']);

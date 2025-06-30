@@ -44,7 +44,7 @@
             </li><!-- End Produk Nav -->
 
             <li class="nav-item">
-                <a class="nav-link <?php echo (uri_string() == 'kategori') ? "" : "collapsed" ?>" href="/kategori">
+                <a class="nav-link <?php echo (uri_string() == 'product_category') ? "" : "collapsed" ?>" href="/kategori">
                     <i class="bi bi-bookmark-fill"></i>
                     <span>KategoriProduk</span>
                 </a>
