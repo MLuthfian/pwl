@@ -1,0 +1,50 @@
+<?= session()->getFlashdata('success') ?>
+<a href="/diskon/create" class="btn btn-primary">Tambah Data</a>
+
+<table class="table">
+<thead>
+    <tr>
+        <th>#</th>
+        <th>Tanggal</th>
+        <th>Nominal</th>
+        <th>Aksi</th>
+    </tr>
+</thead>
+<tbody>
+    <?php foreach ($diskon as $i => $d): ?>
+    <tr>
+        <td><?= $i+1 ?></td>
+        <td><?= $d['tanggal'] ?></td>
+        <td><?= number_format($d['nominal'], 0, ',', '.') ?></td>
+        <td>
+            <a href="/diskon/edit/<?= $d['id'] ?>" class="btn btn-success">Ubah</a>
+            <a href="/diskon/delete/<?= $d['id'] ?>" onclick="return confirm('Hapus?')" class="btn btn-danger">Hapus</a>
+        </td>
+
+        <form method="post" action="/diskon/store">
+            <label>Tanggal</label>
+            <input type="date" name="tanggal" class="form-control" required>
+             <?= session('errors.tanggal') ?>
+
+            <label>Nominal</label>
+            <input type="number" name="nominal" class="form-control" required>
+            <?= session('errors.nominal') ?>
+
+            <button type="submit" class="btn btn-primary">Simpan</button>
+        </form>
+
+        <form method="post" action="/diskon/update/<?= $diskon['id'] ?>">
+            <label>Tanggal</label>
+            <input type="date" name="tanggal" class="form-control" value="<?= $diskon['tanggal'] ?>" readonly>
+
+            <label>Nominal</label>
+            <input type="number" name="nominal" class="form-control" value="<?= $diskon['nominal'] ?>" required>
+
+         <button type="submit" class="btn btn-success">Update</button>
+        </form>
+
+
+    </tr>
+    <?php endforeach ?>
+</tbody>
+</table>
